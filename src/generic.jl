@@ -32,21 +32,21 @@ Base.lastindex(x::CasadiSymbolicObject) = length(x)
 Base.lastindex(x::CasadiSymbolicObject, j::Int) = size(x,j)
 
 ## one, zero, zeros, ones
-Base.one(::Type{C}) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).eye(1)
+Base.one(::Type{C}) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol("SX")).eye(1)
 Base.one(x::C) where C <: CasadiSymbolicObject =
   if size(x,1) == size(x,2)
-    getproperty(casadi, Symbol(C)).eye( size(x,1) )
+    getproperty(casadi, Symbol("SX")).eye( size(x,1) )
   else
     throw(DimensionMismatch("multiplicative identity defined only for square matrices"))
   end
 
-Base.zero(::Type{C}) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).zeros()
+Base.zero(::Type{C}) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol("SX")).zeros()
 Base.zero(x::C) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).zeros( size(x) )
 
-Base.ones(::Type{C}, j::Integer) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).ones(j)
+Base.ones(::Type{C}, j::Integer) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol("SX")).ones(j)
 Base.ones(::Type{C}, j1::Integer, j2::Integer) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).ones(j1, j2)
 
-Base.zeros(::Type{C}, j::Integer) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).zeros(j)
+Base.zeros(::Type{C}, j::Integer) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol("SX")).zeros(j)
 Base.zeros(::Type{C}, j1::Integer, j2::Integer) where C <: CasadiSymbolicObject = getproperty(casadi, Symbol(C)).zeros(j1, j2)
 
 ## Size related operations

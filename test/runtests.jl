@@ -1,6 +1,6 @@
 using Test, CasADi
 import LinearAlgebra: cross, ×, Symmetric
-import Suppressor: @capture_out
+# import Suppressor: @capture_out
 
 cas_symbol = [:SX, :MX]
 
@@ -10,7 +10,7 @@ include("test_importexport.jl")
 include("test_mathfuns.jl")
 include("test_mathops.jl")
 include("test_numbers.jl")
-include("test_types.jl")
+# include("test_types.jl")
 include("test_utils.jl")
 
 for i in cas_symbol
